@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 public class ConfigController {
+
     @FXML
     private TextField txtPlageCibleMin;
     @FXML
@@ -12,6 +13,8 @@ public class ConfigController {
     private TextField txtNbPlaques;
     @FXML
     private TextField txtChrono;
+
+    // a voir si on aura de plus de champs
 
     public void onValider() { // changement de nom stv
         // creer une instance de config et creation d'une partie

@@ -1,15 +1,24 @@
 package org.example.model;
 
-import org.example.util.Constants;
-
 public class Plaque {
     private final int id;
-    private static int lastId = Constants.INIT_PLAQUE_ID;
     private final int valeur;
+    private boolean disponible;
+
+    private static int lastId = 0;
 
     public Plaque(int valeur) {
         this.id = lastId++;
         this.valeur = valeur;
+        this.disponible = true;
+    }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
     }
 
     public int getId() {

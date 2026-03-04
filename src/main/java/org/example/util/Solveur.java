@@ -1,6 +1,6 @@
 package org.example.util;
 
-import org.example.model.Tirage;
+import org.example.model.Partie;
 
 public class Solveur {
 
@@ -9,10 +9,11 @@ public class Solveur {
         throw new IllegalStateException("Utility class");
     }
 
-    public static void resoudre() {
+    public static void resoudre(Partie partie) {
         // TODO: Implémenter l'algorithme de résolution (récursif / backtracking)
-        
+
     }
-    public static void donnerIndice() {
+
+    public static void donnerIndice(Partie partie) {
     }
 }
