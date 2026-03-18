@@ -1,4 +1,4 @@
-package org.example.dto;
+package com.comptebon.dto;
 
 public class PartieSave {
 

@@ -1,10 +1,10 @@
-package org.example.model;
+package com.comptebon.model;
 
 public class Config {
     private int nbPlaque = 6;
     private int plageCibleMin = 100;
     private int plageCibleMax = 999;
-    private boolean optionChrono = false;
+    // private boolean optionChrono = false;
 
     /**
      * Crée une configuration avec les valeurs par défaut.
@@ -16,11 +16,11 @@ public class Config {
      * Crée une configuration personnalisée.
      * Veiller que la configuration saisie soit coherente
      */
-    public Config(int nbPlaque, int plageCibleMin, int plageCibleMax, boolean chrono) {
+    public Config(int nbPlaque, int plageCibleMin, int plageCibleMax) { // chrono
         this.nbPlaque = nbPlaque;
         this.plageCibleMin = plageCibleMin;
         this.plageCibleMax = plageCibleMax;
-        this.optionChrono = chrono;
+        // this.optionChrono = chrono;
     }
 
     // Getters pour accéder aux paramètres de configuration
@@ -36,9 +36,9 @@ public class Config {
         return plageCibleMax;
     }
 
-    public boolean isOptionChrono() {
-        return optionChrono;
-    }
+    // public boolean isOptionChrono() {
+    // return optionChrono;
+    // }
 
     // Setters (optionnels, si on veut modifier la config après création)
     public void setNbPlaque(int nbPlaque) {
@@ -53,7 +53,4 @@ public class Config {
         this.plageCibleMax = plageCibleMax;
     }
 
-    public void setOptionChrono(boolean optionChrono) {
-        this.optionChrono = optionChrono;
-    }
 }

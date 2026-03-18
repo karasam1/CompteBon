@@ -1,6 +1,6 @@
-package org.example.util;
+package com.comptebon.util;
 
-import org.example.model.Partie;
+import com.comptebon.model.Partie;
 
 public class Solveur {
 
@@ -10,10 +10,13 @@ public class Solveur {
     }
 
     public static void resoudre(Partie partie) {
-        // TODO: Implémenter l'algorithme de résolution (récursif / backtracking)
+        // implementation de l'algo
+        // chrono posera probleme car si machine => trop rapide
 
     }
 
     public static void donnerIndice(Partie partie) {
+        // avoir comment donner un indice
+
     }
 }

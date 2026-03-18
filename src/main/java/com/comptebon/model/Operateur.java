@@ -1,4 +1,4 @@
-package org.example.model;
+package com.comptebon.model;
 
 public enum Operateur {
     ADDITION("+") {
@@ -9,7 +9,7 @@ public enum Operateur {
 
         @Override
         public void valider(int a, int b) throws ArithmeticException {
-            // Toujours valide pour des entiers positifs
+            // tjr valide
         }
     },
     SOUSTRACTION("-") {
@@ -20,9 +20,7 @@ public enum Operateur {
 
         @Override
         public void valider(int a, int b) throws ArithmeticException {
-            if (a < b) {
-                throw new ArithmeticException("Le résultat d'une soustraction ne peut pas être négatif.");
-            }
+            // tjr valide
         }
     },
     DIVISION("/") {
@@ -36,6 +34,19 @@ public enum Operateur {
             if (b == 0 || a % b != 0) {
                 throw new ArithmeticException(
                         "La division doit donner un résultat entier et le diviseur ne peut être nul.");
+            }
+        }
+    },
+    MULTIPLICATION("*") {
+        @Override
+        public int calculer(int a, int b) {
+            return a * b;
+        }
+
+        @Override
+        public void valider(int a, int b) throws ArithmeticException {
+            if (a == 0 || b == 0) {
+                throw new ArithmeticException("La multiplication par 0 n'est pas autorisée.");
             }
         }
     };

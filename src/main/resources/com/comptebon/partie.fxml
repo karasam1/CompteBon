@@ -6,7 +6,7 @@
 
 <!-- il faudra faire diviser les composants de la frame  -->
 
-<VBox alignment="TOP_CENTER" spacing="15" xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.Controller" style="-fx-background-color: #E5E7EB;">
+<VBox alignment="TOP_CENTER" spacing="15" xmlns:fx="http://javafx.com/fxml" fx:controller="com.comptebon.controller.PartieController" style="-fx-background-color: #E5E7EB;">
 
     <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
 
@@ -27,9 +27,9 @@
     </HBox>
 
     <HBox alignment="CENTER" spacing="10">
-        <Button text="+" onAction="#ajouter" style="-fx-background-color: #BE185D; -fx-text-fill: white; -fx-font-size: 20; -fx-pref-width: 50;"/>
-        <Button text="-" onAction="#soustraire" style="-fx-background-color: #BE185D; -fx-text-fill: white; -fx-font-size: 20; -fx-pref-width: 50;"/>
-        <Button text="×" onAction="#multiplier" style="-fx-background-color: #BE185D; -fx-text-fill: white; -fx-font-size: 20; -fx-pref-width: 50;"/>
+        <Button text="+" onAction="#onAdditionner" style="-fx-background-color: #BE185D; -fx-text-fill: white; -fx-font-size: 20; -fx-pref-width: 50;"/>
+        <Button text="-" onAction="#onSoustraire" style="-fx-background-color: #BE185D; -fx-text-fill: white; -fx-font-size: 20; -fx-pref-width: 50;"/>
+        <Button text="×" onAction="#onMultiplier" style="-fx-background-color: #BE185D; -fx-text-fill: white; -fx-font-size: 20; -fx-pref-width: 50;"/>
     </HBox>
 
     <StackPane VBox.vgrow="ALWAYS">
