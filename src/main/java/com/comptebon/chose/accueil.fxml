@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #f2eefa;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.comptebon.ControleurPrincipal">
+   <children>
+      <VBox alignment="CENTER" spacing="50.0">
+         <children>
+            <Label style="-fx-font-size: 30px; -fx-font-weight: bold;" text="Le Compte est Bon" />
+            <Button mnemonicParsing="false" onAction="#allerVersParametres" style="-fx-background-color: #b52b57; -fx-text-fill: white; -fx-font-size: 20px; -fx-padding: 15 30; -fx-background-radius: 30;" text="Commencer la partie" />
+         </children>
+      </VBox>
+   </children>
+</StackPane>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="700.0" prefWidth="1000.0" spacing="20.0" styleClass="main-container" stylesheets="@style_moderne.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.comptebon.ControleurPrincipal">
+   <children>
+      <Label styleClass="app-title" text="Le Compte est Bon" />
+      
+      <VBox maxWidth="750.0" spacing="25.0" styleClass="cadre-blanc">
+         <children>
+            <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2e1a4f;" text="Configurer les paramètres" alignment="CENTER" maxWidth="Infinity"/>
+            
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+               <children>
+                  <Label styleClass="label-option" text="Nombre de plaques :" prefWidth="280"/>
+                  <Label fx:id="lblNbPlaques" text="6" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                  <Slider fx:id="sliderPlaques" min="6" max="10" value="6" blockIncrement="1" majorTickUnit="1" minorTickCount="0" snapToTicks="true" HBox.hgrow="ALWAYS" />
+                  <Label text="10" style="-fx-font-size: 14px;"/>
+               </children>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+               <children>
+                  <Label styleClass="label-option" text="Valeur cible - Minimum :" prefWidth="280"/>
+                  <TextField fx:id="txtCibleMin" text="100" styleClass="input-field" prefWidth="300"/>
+               </children>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+               <children>
+                  <Label styleClass="label-option" text="Valeur cible - Maximum :" prefWidth="280"/>
+                  <TextField fx:id="txtCibleMax" text="999" styleClass="input-field" prefWidth="300"/>
+               </children>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+               <children>
+                  <Label styleClass="label-option" text="Chronomètre :" prefWidth="280"/>
+                  <ToggleButton fx:id="btnChrono" onAction="#handleChrono" selected="true" text="ON" style="-fx-background-radius: 20; -fx-padding: 5 15; -fx-font-weight: bold; -fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+               </children>
+            </HBox>
+
+            <HBox alignment="CENTER" spacing="40.0">
+               <children>
+                  <Button onAction="#retourAccueil" text="Annuler" styleClass="btn-principal" prefWidth="220" />
+                  <Button onAction="#lancerJeu" text="Demarrer" styleClass="btn-principal" prefWidth="250" />
+               </children>
+               <VBox.margin><Insets top="30.0" /></VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</VBox>

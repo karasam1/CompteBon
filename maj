@@ -1,0 +1,28 @@
+reset + annuler :
+ il faut supprimer les plaques et les calculs
+
+regle de calculs:
+    empecher la valeur 0
+    empecher les divisions par 0
+    empecher les soustractions qui donnent un resultat negatif
+    fait attention eu sens de la divisions ( sens a prendre en compte)
+
+
+css :
+ faire quelquechose de responsive
+    les nb de plaques sont variable et donc faut faire en sorte a ce que rien
+
+
+
+
+
+solveur :
+  indice: faudrait au le donneur d'indice soit plus intelligent 
+ par exemple : les operations deja faites on demander de faire une operation deja faite
+
+
+tirage :
+ j'ai l'impression que lorsque je gardes la config par defaut alors le jeu semble trop simple 
+
+performance de l'appli :
+  lorsque je lance le solveur il semble assez lent

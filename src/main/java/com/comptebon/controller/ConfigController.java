@@ -1,104 +1,94 @@
 package com.comptebon.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.event.ActionEvent;
 import java.io.IOException;
 
 /**
- * Contrôleur responsable de l'écran de configuration avant le début de la partie.
+ * Contrôleur responsable de l'écran de configuration avant le début de la
+ * partie.
  * 
- * Cette classe gère les interactions définies dans le fichier 'config.fxml', telles que 
- * la modification des paramètres (nombre de plaques, valeurs cibles, chronomètre) 
+ * Cette classe gère les interactions définies dans le fichier 'parametres.fxml',
+ * telles que la modification des paramètres (nombre de plaques, valeurs cibles)
  * et la navigation vers l'écran de jeu via les boutons.
  */
 public class ConfigController {
 
-    /**
-     * Composant Slider permettant à l'utilisateur de glisser pour choisir 
-     * le nombre de plaques avec lesquelles il va jouer (liées au fichier FXML).
-     */
-    @FXML
-    private Slider sliderNbPlaques;
+    @FXML private Slider sliderPlaques;
+    @FXML private Label lblNbPlaques;
+    @FXML private TextField txtCibleMin;
+    @FXML private TextField txtCibleMax;
+    @FXML private ToggleButton btnChrono;
 
-    /**
-     * Champ texte permettant d'afficher numériquement la valeur sélectionnée 
-     * par le Slider pour le nombre de plaques.
-     */
-    @FXML
-    private TextField txtNbPlaques;
-
-    /**
-     * Champ texte utilisé pour saisir ou afficher la borne minimale 
-     * de la cible que le joueur devra atteindre.
-     */
-    @FXML
-    private TextField txtPlageCibleMin;
-
-    /**
-     * Champ texte utilisé pour saisir ou afficher la borne maximale 
-     * de la cible que le joueur devra atteindre.
-     */
-    @FXML
-    private TextField txtPlageCibleMax;
-
-    /**
-     * Case à cocher permettant à l'utilisateur d'activer 
-     * ou de désactiver le mode chronométré pour la partie.
-     */
-    @FXML
-    private CheckBox chkChrono;
-
-    /**
-     * Méthode d'initialisation appelée automatiquement par JavaFX.
-     * 
-     * Dès que l'interface FXML est chargée, cette méthode est exécutée.
-     * Elle sert ici à créer un "Binding" (lien) entre la valeur pointée par le curseur (Slider) 
-     * et l'affichage textuel de cette même valeur dans le champ (TextField) à sa droite.
-     */
     @FXML
     public void initialize() {
-        if (sliderNbPlaques != null && txtNbPlaques != null) {
-            // On ajoute un "listener" qui écoute les changements de valeur du slider
-            sliderNbPlaques.valueProperty().addListener((observable, oldValue, newValue) -> {
-                // On met à jour le texte à chaque fois que le curseur bouge
-                txtNbPlaques.setText(String.valueOf(newValue.intValue()));
+        if (sliderPlaques != null && lblNbPlaques != null) {
+            sliderPlaques.valueProperty().addListener((observable, oldValue, newValue) -> {
+                lblNbPlaques.setText(String.valueOf(newValue.intValue()));
             });
-            
-            // On définit la valeur par défaut au démarrage
-            txtNbPlaques.setText(String.valueOf((int) sliderNbPlaques.getValue()));
+            lblNbPlaques.setText(String.valueOf((int) sliderPlaques.getValue()));
+        }
+    }
+
+    @FXML
+    private void handleChrono(ActionEvent event) {
+        if (btnChrono != null) {
+            if (btnChrono.isSelected()) {
+                btnChrono.setText("ON");
+                btnChrono.setStyle("-fx-background-radius: 20; -fx-padding: 5 15; -fx-font-weight: bold; -fx-background-color: #4CAF50; -fx-text-fill: white;");
+            } else {
+                btnChrono.setText("OFF");
+                btnChrono.setStyle("-fx-background-radius: 20; -fx-padding: 5 15; -fx-font-weight: bold; -fx-background-color: #f44336; -fx-text-fill: white;");
+            }
+        }
+    }
+
+    @FXML
+    public void retourAccueil(ActionEvent event) {
+        try {
+            com.comptebon.App.setRoot("accueil"); // Retourne virtuellement sur un menu principal
+        } catch (IOException e) {
+            System.err.println("Aucun accueil.fxml trouvé ou erreur de chargement.");
         }
     }
 
     /**
-     * Action déclenchée par l'utilisateur lorsqu'il clique sur le bouton "Annuler".
+     * Action déclenchée par l'utilisateur lorsqu'il clique sur "Demarrer" (bouton lancerJeu).
      *
-     * Permet pour l'instant d'afficher un log. Elle servira typiquement 
-     * à ramener l'utilisateur vers le menu d'accueil ou a quitter la page de configuration.
-     * 
-     * @param event L'événement d'action (le clic sur le bouton) propagé par JavaFX.
+     * Valide les paramètres, crée la Configuration puis le modèle Partie,
+     * et injecte ce dernier dans le contrôleur de jeu en chargeant la bonne vue.
      */
     @FXML
-    public void onAnnuler(ActionEvent event) {
-        System.out.println("Action Annuler déclenchée depuis le bouton FXML");
-        // TODO: Implémenter le retour vers l'écran titre ou fermer l'application
-    }
-
-    /**
-     * Action déclenchée par l'utilisateur lorsqu'il clique sur "Lancer la partie".
-     *
-     * Valide virtuellement les paramètres (dans de futures évolutions, la logique de validation 
-     * s'ajoutera ici), puis délègue le changement de scène vers "partie.fxml".
-     * 
-     * @param event L'événement d'action (le clic sur le bouton) propagé par JavaFX.
-     */
-    @FXML
-    public void onLancerPartie(ActionEvent event) {
+    public void lancerJeu(ActionEvent event) {
         try {
-            System.out.println("Paramètres sauvegardés, changement de vue vers 'partie.fxml'");
-            com.comptebon.App.setRoot("partie");
+            // 1. Lire les paramètres depuis l'interface
+            int nbPlaques = (int) sliderPlaques.getValue();
+            int min = Integer.parseInt(txtCibleMin.getText());
+            int max = Integer.parseInt(txtCibleMax.getText());
+            
+            // 2. Créer l'objet métier Configuration et initialiser la Partie
+            com.comptebon.model.Config config = new com.comptebon.model.Config(nbPlaques, min, max);
+            com.comptebon.model.Partie partie = new com.comptebon.model.Partie(config);
+            
+            System.out.println("Paramètres sauvegardés, changement de vue vers 'jeu.fxml'");
+            
+            // 3. Charger le FXML du plateau de jeu
+            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(com.comptebon.App.class.getResource("jeu.fxml"));
+            javafx.scene.Parent root = loader.load();
+            
+            // 4. Récupérer le contrôleur instancié par JavaFX et lui injecter la partie
+            PartieController controller = loader.getController();
+            controller.setPartie(partie);
+            
+            // 5. Remplacer la racine de la scène actuelle par la vue du jeu
+            ((javafx.scene.Node) event.getSource()).getScene().setRoot(root);
+
+        } catch (NumberFormatException e) {
+            System.err.println("Erreur : La cible minimum ou maximum entrée n'est pas un nombre valide.");
         } catch (IOException e) {
             e.printStackTrace();
         }

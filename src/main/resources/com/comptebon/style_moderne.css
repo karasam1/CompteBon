@@ -1,0 +1,90 @@
+/* Fond de l'application (Dégradé violet très clair) */
+.main-container {
+    -fx-background-color: linear-gradient(to bottom right, #f2eefa, #e8e3f5);
+}
+
+/* Style du bouton principal (Le gros bouton rose/rouge) */
+.btn-principal {
+    -fx-background-color: #b52b57;
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-padding: 15 40 15 40;
+    -fx-background-radius: 30;
+    -fx-cursor: hand;
+}
+
+.btn-principal:hover {
+    -fx-background-color: #a0254c;
+}
+
+/* Style des titres */
+.app-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2e1a4f;
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-padding: 10 25;
+}
+
+/* Zone centrale (Le rectangle blanc avec bordure violette) */
+.zone-centrale {
+    -fx-background-color: white;
+    -fx-border-color: #7b61ff;
+    -fx-border-width: 2;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+}
+.main-container {
+    -fx-background-color: #d1cedb; 
+}
+
+/* Le grand cadre blanc central */
+.cadre-blanc {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-border-color: #2e1a4f;
+    -fx-border-width: 2;
+    -fx-border-radius: 15;
+    -fx-padding: 30;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+/* Labels des options */
+.label-option {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2e1a4f;
+}
+
+/* Champs de texte (Inputs) */
+.input-field {
+    -fx-background-color: white;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+}
+
+.plate-button {
+    -fx-background-color: white;
+    -fx-text-fill: #2e1a4f;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-min-width: 60px;
+    -fx-min-height: 60px;
+    -fx-background-radius: 10;
+    -fx-border-color: #c9bfe0;
+    -fx-cursor: hand;
+}
+
+.operator-button {
+    -fx-background-color: #b52b57;
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-min-width: 50px;
+    -fx-min-height: 50px;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}

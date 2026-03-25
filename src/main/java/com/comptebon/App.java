@@ -14,7 +14,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        scene = new Scene(loadFXML("config"), 640, 480);
+        scene = new Scene(loadFXML("accueil"), 1000, 700);
         stage.setTitle("Le Compte est Bon - Configuration");
         stage.setScene(scene);
         stage.show();

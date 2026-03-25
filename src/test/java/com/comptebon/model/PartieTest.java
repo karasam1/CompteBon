@@ -102,4 +102,23 @@ public class PartieTest {
                 "L'historique ne doit pas grandir lors d'une opération invalide");
     }
 
+    @Test
+    public void operationvalide() {
+        Partie partie = new Partie(config);
+        Plaque p1 = new Plaque(10);
+        Plaque p2 = new Plaque(5);
+
+        partie.getTirage().add(p1);
+        partie.getTirage().add(p2);
+
+        partie.effectuerOperation(p1, Operateur.ADDITION, p2);
+
+        assertFalse(p1.isDisponible(), "p1 n'est plus disponible");
+        assertFalse(p2.isDisponible(), "p2 n'est plus disponible");
+        assertEquals(1, partie.getHistorique().size(), "L'historique doit contenir 1 opération");
+        assertEquals(15, partie.getHistorique().peek().getResultat().getValeur(),
+                "La valeur du résultat doit être correcte (10 + 5 = 15)");
+        assertEquals(1, partie.getNbEtapes(), "Le nombre d'étapes doit passer à 1");
+    }
+
 }

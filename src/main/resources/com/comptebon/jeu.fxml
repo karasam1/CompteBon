@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.comptebon.controller.PartieController">
+    <children>
+        <VBox fx:id="mainContainer" alignment="TOP_CENTER" prefHeight="700.0" prefWidth="1000.0" spacing="20.0" styleClass="main-container" stylesheets="@style_moderne.css">
+           <children>
+              <Label styleClass="app-title" text="Le Compte est Bon" />
+
+              <VBox alignment="CENTER" spacing="5.0">
+                 <children>
+                    <Label text="Valeur cible :" styleClass="label-option" />
+                    <Label fx:id="labelCible" style="-fx-font-size: 48px; -fx-font-weight: bold; -fx-background-color: #d7cfe8; -fx-background-radius: 15; -fx-padding: 10 30;" text="???" />
+                 </children>
+              </VBox>
+
+              <FlowPane fx:id="conteneurPlaques" alignment="CENTER" minHeight="60.0" hgap="15.0" vgap="15.0" />
+
+              <HBox fx:id="boiteOperateurs" alignment="CENTER" spacing="15.0">
+                 <children>
+                    <Button onAction="#handleOperateurClick" text="+" styleClass="operator-button" />
+                    <Button onAction="#handleOperateurClick" text="-" styleClass="operator-button" />
+                    <Button onAction="#handleOperateurClick" text="×" styleClass="operator-button" />
+                    <Button onAction="#handleOperateurClick" text="÷" styleClass="operator-button" />
+                 </children>
+              </HBox>
+
+              <VBox maxWidth="800" spacing="10.0" styleClass="cadre-blanc" VBox.vgrow="ALWAYS">
+                 <children>
+                    <HBox alignment="CENTER_LEFT" spacing="15.0">
+                       <children>
+                          <Label text="VOTRE SOLUTION :" styleClass="label-option" />
+                          <Region HBox.hgrow="ALWAYS" />
+                          <MenuButton fx:id="menuAide" text="Aide" style="-fx-background-color: #7b5fb5; -fx-text-fill: white; -fx-font-weight: bold;">
+                            <items>
+                              <MenuItem fx:id="itemSolution" text="Trouver Solution" onAction="#afficherSolution" />
+                              <MenuItem fx:id="itemIndice" text="Donner un indice" onAction="#donnerIndice" />
+                            </items>
+                          </MenuButton>
+                          <Button fx:id="btnAnnuler" onAction="#annulerDerniereAction" text="↫ Annuler" style="-fx-background-color: #ff9800; -fx-text-fill: white;" />
+                          <Button fx:id="btnReinitialiser" onAction="#reinitialiserPartie" text="↺ Reinitialiser" style="-fx-background-color: #f44336; -fx-text-fill: white;" />
+                       </children>
+                    </HBox>
+                    <Separator />
+                    <VBox fx:id="listeCalculs" alignment="TOP_CENTER" spacing="5.0" />
+                    <Region VBox.vgrow="ALWAYS" />
+                 </children>
+                 <VBox.margin><Insets bottom="10.0" left="50.0" right="50.0" /></VBox.margin>
+              </VBox>
+
+              <HBox alignment="CENTER" spacing="20.0">
+                 <padding><Insets bottom="15" /></padding>
+                 <children>
+                    <Button onAction="#sauvegarderPartie" text="💾 Sauvegarder" style="-fx-background-color: #2196F3; -fx-text-fill: white;" />
+                    <Button onAction="#chargerPartie" text="📂 Charger" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" />
+                    <Button onAction="#retourAccueil" text="Quitter" style="-fx-background-color: #666; -fx-text-fill: white;" />
+                 </children>
+              </HBox>
+           </children>
+        </VBox>
+
+        <VBox fx:id="panelNouvellePartie" alignment="CENTER" spacing="20.0" visible="false" style="-fx-background-color: rgba(255, 255, 255, 0.9); -fx-background-radius: 20; -fx-padding: 40; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 20, 0, 0, 0);" maxHeight="250.0" maxWidth="400.0">
+            <Label text="Partie Terminée !" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #4CAF50;" />
+            <Button text="Nouvelle Partie" onAction="#lancerNouvellePartie" style="-fx-font-size: 20px; -fx-background-color: #4CAF50; -fx-text-fill: white; -fx-background-radius: 10; -fx-padding: 10 20; -fx-cursor: hand;" />
+        </VBox>
+    </children>
+</StackPane>
